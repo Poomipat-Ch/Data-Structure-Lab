@@ -1,0 +1,1 @@
+else 'Tropical Storm' if n < 102 else 'Typhoon' if n < 209 else 'Super Typhoon')
