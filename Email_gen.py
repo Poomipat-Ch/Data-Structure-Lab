@@ -1,28 +1,46 @@
 class Email:
     def __init__(self):
-        self.full_name = ''
-        self.first_name = ''
-        self.email = ''
-        self.last_name = ''
+        self.first_name = None
+        self.email = None
+        self.last_name = None
     
     def set_full_name(self,first_name,last_name):
         self.first_name = first_name
         self.last_name = last_name
-        self.full_name = self.first_name+' '+self.last_name
 
     def set_first_name(self,first_name):
         self.first_name = first_name
+
     def set_last_name(self, last_name):
         self.last_name = last_name
 
     def get_first_name(self):
-        return self.first_name.capitalize() if self.first_name != '' else 'Please Enter Your Firstname'
+        if self.first_name == None:
+            return 'Please Enter Your Firstname'
+        return self.first_name.capitalize()
+
     def get_last_name(self):
-        return self.last_name.capitalize() if self.last_name != '' else 'Please Enter Your Lastname'
+        if self.last_name == None:
+            return 'Please Enter Your Lastname'
+        return self.last_name.capitalize() 
+
     def get_full_name(self):
-        return self.get_first_name() + " "+ self.get_last_name() if self.first_name != '' and self.last_name != '' else self.get_first_name() if self.first_name == '' and self.last_name != '' else self.get_last_name() if self.last_name == '' and self.first_name != '' else self.get_first_name()+' & Lastname'
+        if self.first_name == None and self.last_name == None:
+            return self.get_first_name()+' & Lastname'
+        elif self.first_name == None:
+            return self.get_first_name()
+        elif self.last_name == None:
+            return self.get_last_name()
+        return self.get_first_name() + " "+ self.get_last_name()
+
     def get_email(self):
-        return self.first_name.lower()+'.'+self.last_name.lower()+'@kmitl.ac.th' if self.first_name != '' and self.last_name != '' else self.get_first_name()  if self.first_name == '' and self.last_name != '' else self.get_last_name() if self.last_name == '' and self.first_name != '' else self.get_first_name()+' & Lastname'
+        if self.first_name == None and self.last_name == None:
+            return self.get_first_name()+' & Lastname'
+        elif self.first_name == None:
+            return self.get_first_name()
+        elif self.last_name == None:
+            return self.get_last_name()
+        return self.first_name.lower()+'.'+self.last_name.lower()+'@kmitl.ac.th'
 
 n = input('*** Create Email < BY KMITL > ***\nEnter Input : ')
 e = Email()
